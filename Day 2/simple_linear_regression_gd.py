@@ -1,31 +1,39 @@
 # implement simple linear regression using gradient decent to estimate the slope and intercept .use a learning rate of 0.01 and run for 1000 iteration.
 
-import numpy as np
+# Simple Linear Regression using Gradient Descent
+# Learning rate = 0.01
+# Iterations = 1000
 
+# Dataset
+x = [1, 2, 3, 4, 5]
+y = [2, 4, 6, 8, 10]
 
-def gradient_descent(x, y, learning_rate=0.01, iterations=1000):
-	m = 0.0
-	b = 0.0
-	n = len(x)
+n = len(x)
 
-	for _ in range(iterations):
-		y_pred = m * x + b
-		dm = (-2 / n) * np.sum(x * (y - y_pred))
-		db = (-2 / n) * np.sum(y - y_pred)
-		m -= learning_rate * dm
-		b -= learning_rate * db
+# Initialize parameters
+m = 0.0
+c = 0.0
 
-	return m, b
+learning_rate = 0.01
+iterations = 1000
 
+for i in range(iterations):
 
-if __name__ == "__main__":
-	x = np.array([1, 2, 3, 4, 5], dtype=float)
-	y = np.array([3, 5, 7, 9, 11], dtype=float)
+    dm = 0.0
+    dc = 0.0
 
-	slope, intercept = gradient_descent(x, y, learning_rate=0.01, iterations=1000)
-	print(f"Estimated slope: {slope:.4f}")
-	print(f"Estimated intercept: {intercept:.4f}")
+    for j in range(n):
+        y_pred = m * x[j] + c
+        error = y[j] - y_pred
 
+        dm += -2 * x[j] * error
+        dc += -2 * error
 
+    dm = dm / n
+    dc = dc / n
 
+    m = m - learning_rate * dm
+    c = c - learning_rate * dc
 
+print("Estimated Slope (m):", m)
+print("Estimated Intercept (c):", c)
