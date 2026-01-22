@@ -68,13 +68,13 @@ pip install notebook
 Clone the repository:
 
 ```bash
-git clone https://github.com/Tusharxhub/ML.git
+git clone https://github.com/Tusharxhub/Machine_learning.git
 ```
 
 Navigate to the project directory:
 
 ```bash
-cd ML
+cd Machine learning
 ```
 
 Launch Jupyter Notebook:
